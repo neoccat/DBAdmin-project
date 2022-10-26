@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+// a filtré = pas accessible sans connection
 @WebServlet("/My-Admin")
 public class MyAdmin extends HttpServlet {
 
