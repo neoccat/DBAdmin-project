@@ -1,0 +1,7 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/home/infoetu/theo.taccoen.etu/ma-session/web/tomcat/lib/postgresql.jar",
+        "/home/infoetu/theo.taccoen.etu/ma-session/web/tomcat/lib/servlet-api.jar"
+    ]
+}
