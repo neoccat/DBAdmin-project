@@ -27,7 +27,7 @@ public class PsqlConnection extends HttpServlet {
             htmlError = """
                 <div style="margin-top:10px" class="alert alert-danger d-flex align-items-center" role="alert">
                 <div>
-                    Mauvais identifiant ou mot de passe.
+                    Mauvais identifiants ou mot de passe.
                 </div>
             """;
 
@@ -93,7 +93,7 @@ public class PsqlConnection extends HttpServlet {
             res.sendRedirect("My-Admin");
         } catch (Exception e) {
             System.err.println(e.getMessage());
-            res.sendRedirect("Connection?error=\"no\"");
+            res.sendRedirect("Connection?error=\"error\"");
         }
     }
 
