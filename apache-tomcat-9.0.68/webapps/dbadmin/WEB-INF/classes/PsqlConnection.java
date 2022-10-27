@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.text.MessageFormat;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,14 +12,26 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/Connection")
 public class PsqlConnection extends HttpServlet {
     
-    private String url = "jdbc:postgresql://psqlserv/da2i";
+    // TODO A dynamiser
+    //Pour connection iut : jdbc:postgresql://psqlserv/da2i
+    //Pour connection hors iut : jdbc:postgresql://localhost/dbadminproject
+    private String url = "jdbc:postgresql://localhost/dbadminproject";
     private static Connection con;
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
         PrintWriter out = res.getWriter();
 
-        String html = """
+        String htmlError ="";
+        if(req.getParameter("error") != null)
+            htmlError = """
+                <div style="margin-top:10px" class="alert alert-danger d-flex align-items-center" role="alert">
+                <div>
+                    Mauvais identifiant ou mot de passe.
+                </div>
+            """;
+
+        String html = MessageFormat.format("""
         
             <!DOCTYPE html>
             <html lang="en">
@@ -39,7 +52,7 @@ public class PsqlConnection extends HttpServlet {
                     </div>
                 </nav>
                 
-                <div style="display; flex; padding-left: 30%; padding-right: 30%; padding-top: 100px">
+                <div style="display; flex; padding-left: 40%; padding-right: 40%; padding-top: 100px">
                     <form action="Connection" method="post">
                         <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label">Nom :</label>
@@ -51,14 +64,18 @@ public class PsqlConnection extends HttpServlet {
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                       </form>
-                </div>
+
+                      {0}
+
+                      </div>
+                      
             
                 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
             </body>
             </html>
 
-        """;
+        """, htmlError);
 
         out.println(html);
     }
