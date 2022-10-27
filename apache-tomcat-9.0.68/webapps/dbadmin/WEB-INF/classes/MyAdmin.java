@@ -32,6 +32,7 @@ public class MyAdmin extends HttpServlet {
             </head>
             <body>
                 <h1>Connection OK !</h1>
+                <a class="btn btn-danger" href="Disconnect" role="button">Disconnect</a>
             </body>
             </html>
 

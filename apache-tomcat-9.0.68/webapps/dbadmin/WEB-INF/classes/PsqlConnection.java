@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.text.MessageFormat;
 
 import javax.servlet.annotation.WebServlet;
@@ -99,5 +100,10 @@ public class PsqlConnection extends HttpServlet {
 
     public static Connection getConnection() {
         return con;
+    }
+
+    public static void closeConnection() throws SQLException {
+        con.close();
+        con = null;
     }
 }
