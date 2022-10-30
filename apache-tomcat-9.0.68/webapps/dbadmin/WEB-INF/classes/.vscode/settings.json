@@ -2,6 +2,7 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "c:\\Users\\theo.taccoen\\Documents\\boulot_iut\\DBAdmin-project\\apache-tomcat-9.0.68\\lib\\servlet-api.jar",
-        "c:\\Users\\theo.taccoen\\Documents\\boulot_iut\\DBAdmin-project\\apache-tomcat-9.0.68\\lib\\postgresql.jar"
+        "c:\\Users\\theo.taccoen\\Documents\\boulot_iut\\DBAdmin-project\\apache-tomcat-9.0.68\\lib\\postgresql.jar",
+        "c:\\Users\\theo.taccoen\\Documents\\boulot_iut\\DBAdmin-project\\apache-tomcat-9.0.68\\lib\\org-openide-util.jar"
     ]
 }

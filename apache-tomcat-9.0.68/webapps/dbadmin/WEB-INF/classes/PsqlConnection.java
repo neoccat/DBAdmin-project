@@ -56,13 +56,20 @@ public class PsqlConnection extends HttpServlet {
                 <div style="display; flex; padding-left: 40%; padding-right: 40%; padding-top: 100px">
                     <form action="Connection" method="post">
                         <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">URL jdbc :</label>
+                          <input value="jdbc:postgresql://localhost/dbadminproject" name="url" class="form-control" id="login" aria-describedby="jdbcHelp">
+                          <div id="jdbcHelp" class="form-text">postgres : jdbc:postgresql://localhost/dbadminproject</div>
+                          <div id="jdbcHelp" class="form-text">IUT : jdbc:postgresql://psqlserv/da2i</div>
+                        </div>
+                        <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label">Nom :</label>
-                          <input name="login" class="form-control" id="login" aria-describedby="emailHelp">
+                          <input value="postgres" name="login" class="form-control" id="login" aria-describedby="emailHelp">
                         </div>
                         <div class="mb-3">
                           <label for="exampleInputPassword1" class="form-label">Mot de passe :</label>
-                          <input name="password" type="password" class="form-control" id="password">
+                          <input value="postgres" name="password" type="password" class="form-control" id="password">
                         </div>
+                        
                         <button type="submit" class="btn btn-primary">Submit</button>
                       </form>
 
@@ -83,13 +90,14 @@ public class PsqlConnection extends HttpServlet {
 
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
         
+        String url = req.getParameter("url");
         String nom = req.getParameter("login");
         String mdp = req.getParameter("password");
 
-        System.out.println("[LOG] nom :" + nom + ", mdp :" + mdp);
+        System.out.println("[LOG] nom :" + nom + ", mdp :" + mdp + "at :" + url);
 
         try {
-            con = DriverManager.getConnection(this.url, nom, mdp);
+            con = DriverManager.getConnection(url, nom, mdp);
             System.out.println("[LOG] Connection psql OK !");
             res.sendRedirect("My-Admin");
         } catch (Exception e) {
