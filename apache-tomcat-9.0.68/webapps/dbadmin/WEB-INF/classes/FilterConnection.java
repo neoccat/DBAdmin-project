@@ -8,7 +8,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletResponse;
 
-@WebFilter(urlPatterns = { "/My-Admin" })
+@WebFilter(urlPatterns = { "/My-Admin", "/Insert", "/Select", "/Delete", "/DeleteValidation", "/Lister-Etu", "/Update"})
 public class FilterConnection implements Filter {
 
     @Override

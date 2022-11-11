@@ -29,7 +29,7 @@ public class Insert extends HttpServlet {
             html.append("<form action=\"Insert\" method=\"post\" class=\"row g-3\">");
             html.append("<input value=\"" + tableName + "\" name=\"table\" type=\"text\" class=\"d-lg-none\" id=\"table\">");
             while(rs.next()) {
-                if(!rs.getString("column_name").equals("id")) {
+                if(!rs.getString("column_name").contains("id")) {
                     String column = rs.getString("column_name");
                     html.append("<div class=\"col-md-4\">");
                     html.append("<label for=\"" + column + "\" class=\"form-label\">" + column + " : </label>");
@@ -40,7 +40,7 @@ public class Insert extends HttpServlet {
             html.append("<div class=\"col-12\"><button type=\"submit\" class=\"btn btn-success\">Insert</button></div>");
             html.append("</form>");
 
-            MyAdmin.putArgument("insertForm", html.toString());
+            MyAdmin.putArgument("insertOrUpdateForm", html.toString());
             resp.sendRedirect("Select?table=" + tableName);
 
         } catch(Exception e) {
@@ -64,7 +64,7 @@ public class Insert extends HttpServlet {
             
             query.append("insert into " + req.getParameter("table") + " (");
             while(rs.next()) {
-                if(!rs.getString("column_name").equals("id"))
+                if(!rs.getString("column_name").contains("id"))
                     query.append(rs.getString("column_name") + ", ");
             }
             query.delete(query.length() - 2, query.length());

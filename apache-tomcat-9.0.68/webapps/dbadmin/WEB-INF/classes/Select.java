@@ -48,13 +48,13 @@ public class Select extends HttpServlet {
             ResultSetMetaData rsmd = rs.getMetaData();
             while(rs.next()) {
                 html.append("<tr>");
-                html.append("<th id=\"idDelete\" style=\"font-weight: normal\" scope=\"row\">" + rs.getInt("id") + "</th>");
+                html.append("<th id=\"idDelete\" style=\"font-weight: normal\" scope=\"row\">" + rs.getObject(rsmd.getColumnLabel(1)) + "</th>");
                 for(int i = 2; i <= rsmd.getColumnCount(); i++) {
                     html.append("<th style=\"font-weight: normal\" scope=\"row\">" + rs.getObject(rsmd.getColumnLabel(i)) + "</th>");
                 }
                 html.append("<th style=\"padding:2px\" class=\"d-flex justify-content-end\">");
-                html.append("<button type=\"button\" style=\"margin:5px\" class = \"btn btn-primary btn-sm\">Edit</button>");
-                html.append("<a href=\"Delete?tablename=" + tableName + "&id=" + rs.getInt("id") + "\" type=\"button\" style=\"margin:5px\" class=\"btn btn-danger btn-sm\">Delete</a></th>");
+                html.append("<a href=\"Update?tablename=" + tableName + "&id=" + rs.getObject(rsmd.getColumnLabel(1)) + "&idname=" + rsmd.getColumnLabel(1) + "\" type=\"button\" style=\"margin:5px\" class = \"btn btn-primary btn-sm\">Edit</a>");
+                html.append("<a href=\"Delete?tablename=" + tableName + "&id=" + rs.getObject(rsmd.getColumnLabel(1)) + "\" type=\"button\" style=\"margin:5px\" class=\"btn btn-danger btn-sm\">Delete</a></th>");
 
                 html.append("</tr>");
             }

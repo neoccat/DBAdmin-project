@@ -31,7 +31,7 @@ public class MyAdmin extends HttpServlet {
         htmlArguments.put("listTables", "");
         htmlArguments.put("tablename", "Please select a table...");
         htmlArguments.put("deleteModal", "");
-        htmlArguments.put("insertForm", "");
+        htmlArguments.put("insertOrUpdateForm", "");
     }
 
     @Override
@@ -114,7 +114,7 @@ public class MyAdmin extends HttpServlet {
                     <div class="container" style="position:fixed; width:77%; margin-left:22%; height:87%; margin-top:15px">
                     {tablename}
                         <div class="container overflow-auto" style="height:42%;border:solid 1px rgb(236, 236, 238); border-radius: 7px; margin-top:15px">
-                            {insertForm}
+                            {insertOrUpdateForm}
                         </div>
                         <div class="container my-custom-scrollbar table-wrapper-scroll-y" style="height:50%; margin-top:15px; padding-bottom:15px">
                             {select}

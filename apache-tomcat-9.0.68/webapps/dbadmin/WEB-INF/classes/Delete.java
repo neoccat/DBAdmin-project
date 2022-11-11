@@ -26,7 +26,7 @@ public class Delete extends HttpServlet {
             PreparedStatement stmt = con.prepareStatement(query);
             System.out.println(stmt);
             stmt.execute();
-            resp.sendRedirect("Select?table=" + tableName);
+            resp.sendRedirect("Insert?table=" + tableName);
         } catch (SQLException e) {
             e.printStackTrace();
         }
